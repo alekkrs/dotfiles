@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+INSTALL=$(readlink -e "$0")
+DOTFILES=$(dirname "$INSTALL")
+BACKUP=$HOME/.dotfiles_backup
+
+mkdir $BACKUP
+
+cd $DOTFILES
+for FILE in *; do
+	[ "$FILE" = "install" ] && continue
+	TARGET=$HOME/.$FILE
+	if [ -e $TARGET ]; then
+		echo "Backing up $TARGET to $BACKUP..."
+		mv $TARGET $BACKUP
+	fi
+
+	echo "Installing $TARGET..."
+	ln -sf $DOTFILES/$FILE $TARGET
+done
+
+# vim specific install
+mkdir -p $HOME/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+mkdir -p $HOME/.vim/swap
+mkdir -p $HOME/.vim/undo
