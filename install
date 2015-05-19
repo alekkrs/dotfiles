@@ -2,9 +2,9 @@
 
 INSTALL=$(readlink -e "$0")
 DOTFILES=$(dirname "$INSTALL")
-BACKUP=$HOME/.dotfiles_backup
+BACKUP=$HOME/.dotfiles_backup/$(date -Iseconds)
 
-mkdir $BACKUP
+mkdir -p $BACKUP
 
 cd $DOTFILES
 for FILE in *; do
