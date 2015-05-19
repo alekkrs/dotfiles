@@ -9,14 +9,18 @@ mkdir -p $BACKUP
 cd $DOTFILES
 for FILE in *; do
 	[ "$FILE" = "install" ] && continue
-	TARGET=$HOME/.$FILE
-	if [ -e $TARGET ]; then
-		echo "Backing up $TARGET to $BACKUP..."
-		mv $TARGET $BACKUP
+
+	SYMLINK=$HOME/.$FILE
+	TARGET=$DOTFILES/$FILE
+	[ "$(readlink -e $SYMLINK)" = "$TARGET" ] && continue
+
+	if [ -e $SYMLINK ]; then
+		echo "Backing up $SYMLINK to $BACKUP..."
+		mv $SYMLINK $BACKUP
 	fi
 
-	echo "Installing $TARGET..."
-	ln -sf $DOTFILES/$FILE $TARGET
+	echo "Installing $SYMLINK..."
+	ln -sf $TARGET $SYMLINK
 done
 
 # vim specific install
