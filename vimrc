@@ -20,7 +20,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 	\   },
 	\ }
 
-NeoBundleLazy 'Shougo/unite.vim', {
+NeoBundle 'Shougo/unite.vim', {
 	\   'commands' : [
 	\     {
 	\       'name' : 'Unite',
@@ -29,7 +29,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
 	\   ],
 	\ }
 
-NeoBundleLazy 'Shougo/vimfiler.vim', {
+NeoBundle 'Shougo/vimfiler.vim', {
 	\   'depends' : 'Shougo/unite.vim',
 	\   'commands' : [
 	\     {
