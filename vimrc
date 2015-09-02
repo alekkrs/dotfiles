@@ -49,6 +49,7 @@ NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-abolish'
 
 " mhinz
 NeoBundle 'mhinz/vim-signify'
