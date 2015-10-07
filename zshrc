@@ -13,9 +13,9 @@ add_path $HOME/.local/bin
 # tmux {
 function tmux_attach() {
     [[ -z "$TMUX" ]]           || return
-    which tmux 1>&2 >/dev/null || return
+    which tmux 2>&1 >/dev/null || return
 
-    ID=$(tmux ls | grep -vm1 attached | cut -d: -f1)
+    ID=$(tmux ls 2>/dev/null | grep -vm1 attached | cut -d: -f1)
     if [[ -z "$ID" ]]; then
         exec tmux new-session
     else
