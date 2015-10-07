@@ -64,7 +64,7 @@ unfunction zkbd_file
 [[ -n "${key[Left]}"   ]] && bindkey "${key[Left]}"   backward-char
 [[ -n "${key[Right]}"  ]] && bindkey "${key[Right]}"  forward-char
 
-#bindkey -M vicmd '/' history-incremental-search-backward
+export KEYTIMEOUT=1
 # }
 
 # Completion {
