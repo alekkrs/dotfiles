@@ -64,6 +64,22 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'hewes/unite-gtags'
 " }
 
+" Tapping {
+if neobundle#tap('unite.vim')
+	function! neobundle#hooks.on_source(bundle)
+		call unite#custom#profile('default', 'context', {
+			\   'direction': 'botright',
+			\   'auto_resize': 1,
+			\   'no_empty': 1,
+			\ })
+		call unite#filters#matcher_default#use(['matcher_fuzzy'])
+		call unite#filters#sorter_default#use(['sorter_rank'])
+	endfunction
+
+	call neobundle#untap()
+endif
+" }
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -101,14 +117,6 @@ set notagstack
 " }
 
 " Unite {
-call unite#custom#profile('default', 'context', {
-	\   'direction': 'botright',
-	\   'auto_resize': 1,
-	\   'no_empty': 1,
-	\ })
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup'
 let g:unite_source_grep_recursive_opt = ''
